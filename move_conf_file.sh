@@ -1,1 +1,1 @@
-F='.zshrc' && cp .zshrc ~/.vexelenn_config/&& rm .zshrc && ln -s ~/.vexelenn_config/.zshrc .zshrc&& echo Moved .zshrc
+F='.tmux.conf' && cp $F ~/.vexelenn_config/&& rm $F && ln -s ~/.vexelenn_config/$F $F&& echo Moved $F

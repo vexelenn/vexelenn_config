@@ -18,12 +18,11 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-function! Installjshint(info)
-    if a:info.status == 'installed' || a:info.force
-        !sudo apt-get install jshint
-    endif
-endfunction
-Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
+Plug 'Shutnik/jshint2.vim'
+
+Plug 'scrooloose/syntastic'
+
+Plug 'vim-airline/vim-airline'
 
 " Add plugins to &runtimepath
 call plug#end()
