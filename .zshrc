@@ -53,7 +53,7 @@
 
 # User configuration
 
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # source $ZSH/oh-my-zsh.sh
@@ -63,7 +63,7 @@
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -85,6 +85,9 @@
 
 # export "TERM=tmux-256color"
 
+setopt inc_append_history
+setopt share_history
+
 source ~/.zplug/init.zsh
 
 zplug "zplug/zplug"
@@ -97,7 +100,7 @@ zplug "plugins/git",   from:oh-my-zsh, if:"which git"
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
+# zplug "plugins/vi-mode", from:oh-my-zsh
 
 zplug "plugins/command-not-found", from:oh-my-zsh
 
