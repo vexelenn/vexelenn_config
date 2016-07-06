@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/vexelenn/.oh-my-zsh
+export ZSH=/home/vexelenn/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -63,7 +63,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+#   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -84,20 +84,20 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # export "TERM=tmux-256color"
+source ~/.zplug/init.zsh
 
 setopt inc_append_history
 setopt share_history
-
-source ~/.zplug/init.zsh
 
 zplug "zplug/zplug"
 
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, nice:-10
 
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
-# zplug "plugins/git-extras", from:oh-my-zsh, if:"which git"
 
 zplug "plugins/tmux", from:oh-my-zsh
+
+export WORKON_HOME="/home/vagrant/venvs"
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 # zplug "plugins/vi-mode", from:oh-my-zsh
@@ -122,8 +122,7 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-
 export VAGRANT_DEFAULT_PROVIDER="lxc"
-# source /usr/local/bin/virtualenvwrapper.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
