@@ -18,9 +18,10 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 Plug 'junegunn/fzf.vim'
 
-Plug 'Shutnik/jshint2.vim'
+Plug 'vim-airline/vim-airline'
 
 Plug 'scrooloose/syntastic'
 
@@ -37,8 +38,6 @@ Plug 'nvie/vim-flake8'
 Plug 'jnurmine/Zenburn'
 
 Plug 'altercation/vim-colors-solarized'
-
-Plug 'scrooloose/nerdtree'
 
 Plug 'jistr/vim-nerdtree-tabs'
 
