@@ -40,8 +40,6 @@ Plug 'jnurmine/Zenburn'
 
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'scrooloose/nerdtree'
-
 Plug 'jistr/vim-nerdtree-tabs'
 
 Plug 'tpope/vim-fugitive'
@@ -49,6 +47,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 
 Plug 'scrooloose/nerdcommenter'
+
+Plug 'mileszs/ack.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -161,3 +161,31 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map <C-p> :Files<CR>
 
 set ignorecase
+
+" set autochdir
+" set tags+=./tags;
+"
+augroup myvimrc
+  au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+let g:ack_default_options = " -H --nocolor --nogroup --column"
+
+" inoremap jk <ESC>
+
+xnoremap p pgvy
+
+set pastetoggle=<F2>
+
+" inoremap <esc> <nop>
+" inoremap  <Up>     <NOP>
+" inoremap  <Down>   <NOP>
+" inoremap  <Left>   <NOP>
+" inoremap  <Right>  <NOP>
+" inoremap  <Esc>    <NOP>
+" noremap   <Up>     <NOP>
+" noremap   <Down>   <NOP>
+" noremap   <Left>   <NOP>
+" noremap   <Right>  <NOP>
+" noremap   <Esc>    <NOP>
