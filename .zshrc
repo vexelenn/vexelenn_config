@@ -1,12 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/vexelenn/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="lambda"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -53,20 +47,28 @@ export ZSH=/home/vexelenn/.oh-my-zsh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin"
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin:/home/vexelenn/bin:/usr/local/java/jdk1.8.0_91/bin
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vim'
+export VISUAL=vim
+export PAGER=less
+
+# zsh will not beep
+setopt no_beep
+
+# Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
+setopt notify
+
+# Turn off terminal driver flow control (CTRL+S/CTRL+Q)
+setopt noflowcontrol
+stty -ixon -ixoff
+
+# Do not kill background processes when closing the shell.
+setopt nohup
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -92,24 +94,61 @@ setopt share_history
 zplug "zplug/zplug"
 
 zplug "robbyrussell/oh-my-zsh", use:oh-my-zsh.sh, nice:-10
+# zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:-1
 
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
 
 zplug "plugins/tmux", from:oh-my-zsh
 
-export WORKON_HOME="/home/vagrant/venvs"
+export WORKON_HOME="$HOME/venvs"
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
-# zplug "plugins/vi-mode", from:oh-my-zsh
 
 zplug "plugins/command-not-found", from:oh-my-zsh
 
 zplug "supercrabtree/k"
 zplug "plugins/ssh-agent", from:oh-my-zsh
 
-# zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+setopt prompt_subst # Make sure propt is able to be generated properly.
+zplug "halfo/lambda-mod-zsh-theme" # , use:"lambda-mod.zsh-theme"
 
-zplug "halfo/lambda-mod-zsh-theme", use:"lambda-mod.zsh-theme"
+zplug "plugins/vi-mode", from:oh-my-zsh
+bindkey -M viins 'kj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
+
+# taken from http://pawelgoscicki.com/archives/2012/09/vi-mode-indicator-in-zsh-prompt/
+vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
+vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
+# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
+# Thanks Ron! (see comments)
+function TRAPINT() {
+  vim_mode=$vim_ins_mode
+  return $(( 128 + $1 ))
+}
+# thanks Pawel:-)
+
+# ALIASES
+
+# ls
+alias ll='ls -al'
+alias l='ls -l'
+alias sl=ls
+
+alias cd..='cd ..'
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -124,5 +163,9 @@ zplug load --verbose
 
 export VAGRANT_DEFAULT_PROVIDER="lxc"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# RPROMPT='${vim_mode}'
 
+# alias for ansible
+alias ansible_fast_tests="py.test -x -m 'not slow' -k 'not test_build_lambda_script'"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,0 +1,55 @@
+!! InconsolataDz
+URxvt.font:             xft:Inconsolata-dz for Powerline:size=10:hinting=True;antialias:True,xft:PowerlineSymbols,xft:Font Awesome:size=10,xft:WenQuanYi Bitmap Song-12:medium;antialias=False,xft:WenQuanYi Zen Hei-12:medium;antialias=True,xft:HanaMinA-12:medium;antialias:True,xft:HanaMinB-12:medium;antialias:True,xft:HanaMinPlus-12:medium;antialias:True
+URxvt.boldFont: xft:Inconsolata-dz for Powerline:size=10:bold;hinting=True;antialias:True,xft:Font Awesome:size=10,xft:WenQuanYi Bitmap Song-12:bold;antialias=False,xft:WenQuanYi Zen Hei-12:bold;antialias=True,xft:HanaMinA-12:bold;antialias:True,xft:HanaMinB-12:bold;antialias:True,xft:HanaMinPlus-12:bold;antialias:True
+# urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12
+# URxvt*font:            xft:DejaVu Sans Mono:size=8
+
+urxvt*termName:         rxvt
+urxvt*background:       #000000
+urxvt*foreground:       #cccccc
+urxvt*scrollBar:        false
+urxvt*perl-lib:         /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:  default,matcher
+urxvt*urlLauncher:      /opt/mozilla/bin/firefox
+urxvt*matcher.button:   1
+# urxvt*fading:           50
+# urxvt*fadeColor:        #000000
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+urxvt*background:       rgba:0000/0000/0000/cccc
+
+URxvt.transparent:   true
+URxvt.tintColor:     black
+URxvt.shading:       18 
+ 
+URxvt*color0:      #000000
+URxvt*color1:      #9e1828
+URxvt*color2:      #aece92
+URxvt*color3:      #968a38
+URxvt*color4:      #414171
+URxvt*color5:      #963c59
+URxvt*color6:      #418179
+URxvt*color7:      #bebebe
+URxvt*color8:      #666666
+URxvt*color9:      #cf6171
+URxvt*color10:     #c5f779
+URxvt*color11:     #fff796
+URxvt*color12:     #4186be
+URxvt*color13:     #cf9ebe
+URxvt*color14:     #71bebe
+URxvt*color15:     #ffffff
+
+# URxvt*reverseVideo:        true
+
+URxvt*urlLauncher: chromium-browser
+!urxvt.matcher.pattern.0: \\b(?:(?:https?|ftp|news|file):\/\/|mailto:)[ab-zA-Z0-9\-\@;\/?:&=%\$_.+!*\x27(),~#]+ [ab-zA-Z0-9\-\@;\/?:&=%\$_+!*\x27()~]
+URxvt*matcher.pattern.0: \\b(?:(?:https?|ftp):\/\/|mailto:)[\\w\-\@;\/?:&=%\$_.+!*\x27(),~#]+ [\\w\-\@;\/?:&=%\$_+!*\x27()~]
+URxvt*matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+
+!!! This one matches image URLs and open them in FEH
+URxvt*matcher.pattern.2:    \\bhttps?:\/\/[\\w-.]*\/[\\w./?&@#-]*.(jpg|jpeg|png)
+URxvt*matcher.launcher.2:    feh $0
+
