@@ -169,3 +169,10 @@ export VAGRANT_DEFAULT_PROVIDER="lxc"
 alias ansible_fast_tests="py.test -x -m 'not slow' -k 'not test_build_lambda_script'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="/home/vexelenn/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export JIRA_USERNAME="l.malecki@clearcode.cc"
+export JIRA_PASSWORD="1234lucas"
+alias release.py=/home/vexelenn/venvs/release_py/bin/release.py

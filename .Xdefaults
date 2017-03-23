@@ -14,6 +14,7 @@ urxvt*urlLauncher:      /opt/mozilla/bin/firefox
 urxvt*matcher.button:   1
 # urxvt*fading:           50
 # urxvt*fadeColor:        #000000
+URxvt*saveLines:0
 
 Xft*dpi:                96
 Xft*antialias:          true

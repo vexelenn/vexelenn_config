@@ -39,7 +39,7 @@ Plug 'vim-scripts/indentpython.vim'
 
 Plug 'Valloric/YouCompleteMe'
 
-Plug 'nvie/vim-flake8'
+" Plug 'nvie/vim-flake8'
 
 Plug 'jnurmine/Zenburn'
 
@@ -86,7 +86,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs=1
 
 let g:syntastic_python_checkers=['pylama']
-let g:syntastic_python_pylama_args = '-l pep8,pep257,mccabe,pyflakes,pylint'
+let g:syntastic_python_pylama_args = '-l pep257,mccabe,pyflakes,pylint'
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 " enable syntax highlighting
 syntax enable
@@ -320,3 +322,5 @@ endfunction
 
 nmap <Leader>o :call GotoJump()<CR>
 
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
