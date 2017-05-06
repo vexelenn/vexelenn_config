@@ -176,3 +176,5 @@ export NVM_DIR="/home/vexelenn/.nvm"
 export JIRA_USERNAME="l.malecki@clearcode.cc"
 export JIRA_PASSWORD="1234lucas"
 alias release.py=/home/vexelenn/venvs/release_py/bin/release.py
+
+# export TERM=xterm-256color

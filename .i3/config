@@ -13,12 +13,17 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:Ubuntu Mono 10
+
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
+
+# some colours
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -84,7 +89,13 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+#
+# # Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -126,10 +137,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -146,15 +157,30 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# Bar {
+#         status_command ~/.i3/conky-i3bar
+#         #status_command i3status -c ~/.i3/i3status.conf
+#         #position top
+# }
 bar {
-        status_command i3status
+  status_command i3status
+#  tray_output LVDS
+  colors {
+    separator #666666
+    background #000000
+    statusline #ffffff
+    focused_workspace #551a8b #551a8b #ffffff
+    active_workspace #333333 #5f676a #ffffff
+    inactive_workspace #000000 #000000 #888888
+    urgent_workspace #2f343a #900000 #ffffff
+  }
 }
 # multimedia keys
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -173,10 +199,54 @@ bindsym XF86AudioPrev exec playerctl previous
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 bindsym --release $mod+Shift+s exec scrot -s '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'
 
+# Windows settings
+new_window pixel 2
+for_window [class="^Psi-plus$"] floating enable, move container to workspace 2
+for_window [title="^TerminalHtop$"] floating enable
+for_window [class="^ThunarHome$"] floating enable
+for_window [title="^File Operation Progress$"] floating enable
+for_window [title="^Current Media Information$"] floating enable
+for_window [class="^Xfrun4$"] floating enable
+for_window [class="^Xfce4-appfinder$"] floating enable
+no_focus   [class="^Xfce4-notifyd$" ]
+for_window [class="^cameraclient$"] floating enable
+for_window [class="^blueman-manager$"] floating enable
+for_window [class="^galculator$"] floating enable
+for_window [class="^vlc$"] floating enable
+for_window [class="^ffplay$"] floating enable
+for_window [class="^Yad$"] floating enable border normal
+for_window [class="^gnuplot$"] floating enable
+for_window [class="^xpad$"] floating enable
+for_window [class="^Rsvg-view-3$"] floating enable
+for_window [class="^Volumeicon$"] floating enable
+for_window [class="^Pavucontrol$"] floating enable
+
+# dpmsoff
+# https://github.com/flux242/dotfiles/tree/master/.bin
+
+# exec --no-startup-id ~/bin/dpmsoff &
+
+exec --no-startup-id compton &
+# keyboard settings
+exec --no-startup-id xfsettingsd --sm-client-disable &
+
+exec --no-startup-id xfce4-volumed &
+exec --no-startup-id xfce4-power-manager &
 # network manager
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id pnmixer &
+exec --no-startup-id xpad &
+exec --no-startup-id xxkb &
 
 # set bg:
 exec --no-startup-id xsetroot -solid "#002244"
 exec --no-startup-id feh --bg-fill Pictures/Desktops/planets-2560x1600.jpg
 exec --no-startup-id nitrogen --restore
+
+client.focused #3b1261 #3b1261 #ffffff #662b9c
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused #222222 #222222 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
