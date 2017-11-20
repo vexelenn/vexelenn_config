@@ -183,8 +183,8 @@ bar {
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -197,7 +197,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # notifications
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
-bindsym --release $mod+Shift+s exec scrot -s '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'
+bindsym --release $mod+Shift+x exec scrot -s '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'
 
 # Windows settings
 new_window pixel 2
@@ -220,6 +220,7 @@ for_window [class="^xpad$"] floating enable
 for_window [class="^Rsvg-view-3$"] floating enable
 for_window [class="^Volumeicon$"] floating enable
 for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^Page Un.*"] floating enable
 
 # dpmsoff
 # https://github.com/flux242/dotfiles/tree/master/.bin

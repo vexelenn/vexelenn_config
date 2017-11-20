@@ -178,3 +178,8 @@ export JIRA_PASSWORD="1234lucas"
 alias release.py=/home/vexelenn/venvs/release_py/bin/release.py
 
 # export TERM=xterm-256color
+export PATH="/home/vexelenn/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
+export ANSIBLE_COW_SELECTION=random

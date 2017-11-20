@@ -1,8 +1,13 @@
 !! InconsolataDz
-URxvt.font:             xft:Inconsolata-dz for Powerline:size=10:hinting=True;antialias:True,xft:PowerlineSymbols,xft:Font Awesome:size=10,xft:WenQuanYi Bitmap Song-12:medium;antialias=False,xft:WenQuanYi Zen Hei-12:medium;antialias=True,xft:HanaMinA-12:medium;antialias:True,xft:HanaMinB-12:medium;antialias:True,xft:HanaMinPlus-12:medium;antialias:True
-URxvt.boldFont: xft:Inconsolata-dz for Powerline:size=10:bold;hinting=True;antialias:True,xft:Font Awesome:size=10,xft:WenQuanYi Bitmap Song-12:bold;antialias=False,xft:WenQuanYi Zen Hei-12:bold;antialias=True,xft:HanaMinA-12:bold;antialias:True,xft:HanaMinB-12:bold;antialias:True,xft:HanaMinPlus-12:bold;antialias:True
-# urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12
-# URxvt*font:            xft:DejaVu Sans Mono:size=8
+! urxvt*font: xft:Terminus:pixelsize=12,xft:Inconsolata\ for\ Powerline:size=16:hinting=True;antialias:True
+
+! URxvt*font:            xft:Inconsolata-dz\ for\ Powerline:pixelsize=16:hinting=True;antialias:True
+! URxvt.font:             xft:Inconsolata-dz for Powerline:size=16:hinting=True;antialias:True,xft:PowerlineSymbols,xft:Font Awesome:size=16,xft:WenQuanYi Bitmap Song-16:medium;antialias=False,xft:WenQuanYi Zen Hei-16:medium;antialias=True,xft:HanaMinA-16:medium;antialias:True,xft:HanaMinB-16:medium;antialias:True,xft:HanaMinPlus-16:medium;antialias:True
+! URxvt.boldFont: xft:Inconsolata-dz for Powerline:size=16:bold;hinting=True;antialias:True,xft:Font Awesome:size=16,xft:WenQuanYi Bitmap Song-16:bold;antialias=False,xft:WenQuanYi Zen Hei-16:bold;antialias=True,xft:HanaMinA-16:bold;antialias:True,xft:HanaMinB-16:bold;antialias:True,xft:HanaMinPlus-16:bold;antialias:True
+!! urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=16
+! URxvt*font:            xft:DejaVu Sans Mono:size=18
+URxvt*font: xft:Droid Sans Mono for Powerline:size=14
+! URxvt*letterSpace: -2
 
 urxvt*termName:         rxvt
 urxvt*background:       #000000
@@ -12,15 +17,15 @@ urxvt*perl-lib:         /usr/lib/urxvt/perl/
 urxvt*perl-ext-common:  default,matcher
 urxvt*urlLauncher:      /opt/mozilla/bin/firefox
 urxvt*matcher.button:   1
-# urxvt*fading:           50
-# urxvt*fadeColor:        #000000
+! urxvt*fading:           50
+! urxvt*fadeColor:        #000000
 URxvt*saveLines:0
 
 Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
 
-urxvt*background:       rgba:0000/0000/0000/cccc
+! urxvt*background:       rgba:0000/0000/0000/cccc
 
 URxvt.transparent:   true
 URxvt.tintColor:     black
@@ -43,7 +48,7 @@ URxvt*color13:     #cf9ebe
 URxvt*color14:     #71bebe
 URxvt*color15:     #ffffff
 
-# URxvt*reverseVideo:        true
+! URxvt*reverseVideo:        true
 
 URxvt*urlLauncher: chromium-browser
 !urxvt.matcher.pattern.0: \\b(?:(?:https?|ftp|news|file):\/\/|mailto:)[ab-zA-Z0-9\-\@;\/?:&=%\$_.+!*\x27(),~#]+ [ab-zA-Z0-9\-\@;\/?:&=%\$_+!*\x27()~]
