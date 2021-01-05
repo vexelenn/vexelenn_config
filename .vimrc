@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
+Plug 'rafi/awesome-vim-colorschemes'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -37,7 +38,7 @@ Plug 'vim-scripts/indentpython.vim'
 
 " Plug 'tmhedberg/SimpylFold'
 
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " Plug 'nvie/vim-flake8'
 
@@ -184,16 +185,12 @@ let ropevim_extended_complete=1
 "  execfile(activate_this, dict(__file__=activate_this))
 "EOF
 
-if has('gui_running')
-  set background=dark
-  set background=light
-  colorscheme solarized
-else
-  set background=dark
-  " colorscheme zenburn
-  " colorscheme blue
-  colorscheme solarized
-endif
+set background=dark
+" set background=light
+colorscheme twilight256
+" colorscheme zenburn
+" colorscheme blue
+" colorscheme solarized
 
 nnoremap <F5> :GundoToggle<CR>
 
