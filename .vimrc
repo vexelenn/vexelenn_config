@@ -1,4 +1,4 @@
-"  This must be first, because it changes other options as side effect
+" This must be first, because it changes other options as side effect
 cmap w!! w !sudo tee % >/dev/null
 
 set nocompatible
@@ -9,6 +9,8 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
+Plug 'CoderCookE/vim-chatgpt'
+
 Plug 'rafi/awesome-vim-colorschemes'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
@@ -17,7 +19,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Group dependencies, vim-snippets depends on ultisnips
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -34,7 +36,7 @@ Plug 'scrooloose/syntastic'
 
 Plug 'vim-airline/vim-airline'
 
-Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/indentpython.vim'
 
 " Plug 'tmhedberg/SimpylFold'
 
@@ -67,6 +69,23 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 
 Plug 'haya14busa/incsearch-easymotion.vim'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
+" Svelte and js
+Plug 'evanleck/vim-svelte'
+Plug 'pangloss/vim-javascript'
+Plug 'HerringtonDarkholme/yats.vim'
+" Lang servers
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'codechips/coc-svelte', {'do': 'npm install'}
+
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -331,3 +350,41 @@ set laststatus=2
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 " set t_Co=256
 
+" let g:vim_markdown_folding_disabled = 1
+" 
+let g:chat_gpt_custom_persona = {'se': 'Act as a Senior Software Engineer with knowledge of Pandas, DASK, Scala, Spark, Bitbucket Pipelines, Dockerfiles, docker-compose, python, nodejs and others.'}
+let g:chat_gpt_custom_persona = {'ts': 'Act as a Senior Software Engineer with knowledge of nodejs, jest, jest-ts, typescript, Bitbucket Pipelines, Dockerfiles, docker-compose, python and others.'}
+let g:asyncomplete_auto_popup = 1
+" let g:openai_api_key = system('echo $OPENAI_API_KEY')
+let g:openai_api_key = substitute(system('echo $OPENAI_API_KEY'), '\n\+$', '', '')
+" let g:openai_api_key=''
+let g:chat_gpt_max_tokens=2000
+let g:chat_gpt_model='gpt-4'
+let g:chat_gpt_session_mode=0
+let g:chat_gpt_temperature = 0.7
+let g:chat_gpt_lang = 'English'
+let g:chat_gpt_split_direction = 'horizontal'
+let g:split_ratio=4
+
+" COC
+let g:coc_node_path = '$HOME/.nvm/versions/node/v18.20.4/bin/node'
+nmap ff  (coc-format-selected)
+nmap rn (coc-rename)
+nmap  gd (coc-definition)
+nmap  gy (coc-type-definition)
+nmap  gi (coc-implementation)
+nmap  gr (coc-references)
+
+set updatetime=300
+set shortmess+=c " don't give |ins-completion-menu| messages.
+
+" Use K to show documentation in preview window
+nnoremap  K :call show_documentation()
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
